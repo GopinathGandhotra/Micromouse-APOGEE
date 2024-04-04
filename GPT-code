@@ -1,0 +1,72 @@
+
+#define NUM_SENSORS 3 // Number of ultrasonic sensors
+#define SENSOR_THRESHOLD 20 // Threshold distance for obstacle detection
+#define MOTOR_SPEED 150 // Motor speed
+
+// Define pin mappings
+const int leftMotorPin1 = 2;
+const int leftMotorPin2 = 3;
+const int rightMotorPin1 = 4;
+const int rightMotorPin2 = 5;
+
+// Define variables
+int sensorPins[NUM_SENSORS] = {6, 7, 8}; // Ultrasonic sensor pins
+int distances[NUM_SENSORS]; // Array to store sensor readings
+
+void setup() {
+  // Initialize motors
+  pinMode(leftMotorPin1, OUTPUT);
+  pinMode(leftMotorPin2, OUTPUT);
+  pinMode(rightMotorPin1, OUTPUT);
+  pinMode(rightMotorPin2, OUTPUT);
+
+  // Initialize ultrasonic sensors
+  for (int i = 0; i < NUM_SENSORS; i++) {
+    pinMode(sensorPins[i], INPUT);
+  }
+
+  // Initialize serial communication
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Read sensor data
+  for (int i = 0; i < NUM_SENSORS; i++) {
+    distances[i] = readSensor(sensorPins[i]);
+  }
+
+  // Check for obstacles and take appropriate action
+  if (distances[0] < SENSOR_THRESHOLD || distances[1] < SENSOR_THRESHOLD || distances[2] < SENSOR_THRESHOLD) {
+    // Obstacle detected, implement flood fill algorithm to navigate
+    // Implement flood fill logic here
+    // Move motors accordingly
+  } else {
+    // No obstacles detected, continue forward
+    moveForward();
+  }
+}
+
+// Function to read distance from ultrasonic sensor
+int readSensor(int pin) {
+  // Code to read distance from ultrasonic sensor
+}
+
+// Function to move motors forward
+void moveForward() {
+  // Code to move motors forward
+}
+
+// Function to move motors backward
+void moveBackward() {
+  // Code to move motors backward
+}
+
+// Function to turn left
+void turnLeft() {
+  // Code to turn left
+}
+
+// Function to turn right
+void turnRight() {
+  // Code to turn right
+}
